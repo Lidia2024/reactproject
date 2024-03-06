@@ -1,0 +1,24 @@
+header{
+    .logo{
+        font-weight: 700;
+        font-size: 40px;
+    }
+    .presentation{
+        margin: 50px 0;
+        background: url(./../../Pics/my-journey-with-deep-learning-and-gpu-pt1-social.jpg) no-repeat;
+        width: 100%;
+        height: 500px;
+        background-size: cover;
+        background-position: center center;
+        background-blend-mode:multiply;
+        position: relative;
+    }
+    .presentation::after{
+        content: 'Everything you need for studies';
+        color: #FFF;
+        position: relative;
+        top: 50px;
+        left: 80px;
+        font-size: 90px;
+    }
+}

@@ -1,0 +1,12 @@
+*{
+  margin:0;
+  padding: 0;
+}
+
+body{
+  background: #92EAFF;
+  color: #2f6671;
+  font-family: "Kode Mono", monospace;
+  font-weight: 400;
+  margin: auto;
+}

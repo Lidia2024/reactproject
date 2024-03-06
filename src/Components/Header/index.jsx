@@ -5,7 +5,7 @@ export default function Header(){
     return(
         <header>
             <div>
-                <span className={styles.logo}>Phone Sell</span>
+                <span className={styles.logo}>Aristotle</span>
             </div>
             <div className={styles.presentation}></div>
         </header>
