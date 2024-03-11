@@ -3,22 +3,41 @@ header{
         font-weight: 700;
         font-size: 40px;
     }
+
+    .nav{
+        float: right;
+        list-style: none;
+        
+        li{
+            display: inline;
+            margin-left: 25px;
+            cursor: pointer;
+            font-size: 25px;
+            font-weight: 400;
+            transition: opacity 500ms ease;
+        }
+        li:hover{
+            opacity: 0.5;
+        }
+    }
     .presentation{
-        margin: 50px 0;
+        margin: 50px auto;
         background: url(./../../Pics/my-journey-with-deep-learning-and-gpu-pt1-social.jpg) no-repeat;
-        width: 100%;
+        width: 97%;
         height: 500px;
         background-size: cover;
         background-position: center center;
         background-blend-mode:multiply;
         position: relative;
+        border-radius: 15px;
     }
+
     .presentation::after{
         content: 'Everything you need for studies';
         color: #FFF;
         position: relative;
-        top: 50px;
-        left: 80px;
-        font-size: 90px;
+        top: 70px;
+        left: 50px;
+        font-size: 70px;
     }
 }

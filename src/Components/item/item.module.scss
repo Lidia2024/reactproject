@@ -1,0 +1,13 @@
+.item{
+    width: 30%;
+    border-radius: 10px;
+    overflow: hidden;
+    img{
+        border-radius: 10px;
+        width: 100%;
+        transition: transform 500ms ease;
+    }
+    img:hover{
+        transform: scale(1.05);
+    }
+}
