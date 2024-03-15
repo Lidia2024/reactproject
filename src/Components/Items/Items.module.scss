@@ -5,5 +5,13 @@ main{
     justify-content: space-around;
     border-radius: 10px;
     margin-bottom: 50px;
-    
+
+    h2,p,b,{
+        margin: 10px 20px;
+        color: #2f6671;
+    }
+    b{
+        font-size: 20px;
+    }
+       
 }

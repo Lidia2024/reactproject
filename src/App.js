@@ -98,7 +98,33 @@ export default function App(){
       price:'7.99$'
 
     },
-  ])
+    {
+      id:11,
+      title:'Pencil Sharpener',
+      img:'Точилка.jpg',
+      desc:'Stainless steel blade plasric pencil sharpener',
+      category:'Office supplies',
+      price:'15.99$'
+
+    },
+    {
+      id:12,
+      title:'Compass',
+      img:'Циркуль.jpg',
+      desc:'Metal multipurpose mathimatical compass',
+      category:'Office supplies',
+      price:'14.99$'
+
+    },
+  ]);
+
+  const[orders,setOrders]=useState([]);
+
+  const addToOrder=(item)=>{
+    if(!orders.some((el)=>el.id===item.id)){
+      setOrders([...orders,item]);
+    }
+  }
   
   return (
     <div className="wrapper">

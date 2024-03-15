@@ -1,10 +1,12 @@
 header{
+    position: relative;
     .logo{
         font-weight: 700;
-        font-size: 40px;
+        font-size: 70px;
+        margin-left: 20px;
     }
-
     .nav{
+        margin: 30px 20px;
         float: right;
         list-style: none;
         
@@ -15,14 +17,44 @@ header{
             font-size: 25px;
             font-weight: 400;
             transition: opacity 500ms ease;
-        }
-        li:hover{
+        
+        &:hover{
             opacity: 0.5;
         }
+        }
+    }
+
+    .shopCartButton{
+        float: right;
+        position: relative;
+        top: 30px;
+        cursor: pointer;
+        font-size: 30px;
+        transition: color,transform 500ms ease;
+
+    &:hover, &.active{
+        color: #FAFAFA !important;
+        transform: scale(1.3);
+    }
+    }
+    .shopCart{
+        position: absolute;
+        top: 40px;
+        right: 20px;
+        width: 450px;
+        border-radius: 15px;
+        min-height: 100px;
+        background: #FFF;
+        -webkit-box-shadow: -21px 24px 21px 2px rgba(34, 60, 80, 0.27);
+        -moz-box-shadow: -21px 24px 21px 2px rgba(34, 60, 80, 0.27);
+        box-shadow: -21px 24px 21px 2px rgba(34, 60, 80, 0.27);
+        z-index: 1000;
+
     }
     .presentation{
         margin: 50px auto;
         background: url(./../../Pics/my-journey-with-deep-learning-and-gpu-pt1-social.jpg) no-repeat;
+        pointer-events: none;
         width: 97%;
         height: 500px;
         background-size: cover;
@@ -30,14 +62,15 @@ header{
         background-blend-mode:multiply;
         position: relative;
         border-radius: 15px;
-    }
 
-    .presentation::after{
+    &::after{
         content: 'Everything you need for studies';
         color: #FFF;
-        position: relative;
+        position: absolute;
         top: 70px;
-        left: 50px;
-        font-size: 70px;
+        left: 100px;
+        width: 600px;
+        font-size: 90px;
+    } 
     }
 }

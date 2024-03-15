@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from "react";
 import styles from './Header.module.scss';
+import { BsCart2 } from "react-icons/bs";
 
 export default function Header(){
+    let [cartOpen, setCartOpen]=useState(false);
     return(
         <header>
             <div>
@@ -11,6 +13,14 @@ export default function Header(){
                     <li>Контакты</li>
                     <li>Личный кабинет</li>
                 </ul>
+                <BsCart2 onClick={()=>setCartOpen(cartOpen=!cartOpen)} 
+                className={`${styles.shopCartButton} ${cartOpen ? styles.active : ''}`}/>
+            
+                {cartOpen &&(
+                   <div className={styles.shopCart}>
+                    
+                    </div>
+                )}
             </div>
             <div className={styles.presentation}></div>
         </header>
