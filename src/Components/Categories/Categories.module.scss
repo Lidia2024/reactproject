@@ -1,0 +1,22 @@
+.categories{
+
+    div{
+        display: inline-block;
+        background: #fff;
+        border-radius: 50px;
+        padding: 10px 20px;
+        margin-bottom: 25px;
+        margin-left: 17px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: all 800ms ease;
+        font-size: 20px;
+        font-weight: 500;
+    
+
+        &:hover{
+            border-color: #2f6671;
+            transform: scale(1.1);
+        }
+    }
+}

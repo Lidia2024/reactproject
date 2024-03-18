@@ -1,12 +1,16 @@
 import React from 'react';
-import { useState } from 'react';
+import {useState} from 'react';
+import {useEffect} from 'react';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import './index.css';
 import Items from './Components/Items';
+import Categories from './Components/Categories';
+import ShowFullItem from './Components/ShowFullItem';
 
-export default function App(){
+export default function App() {
   
+
   const [items,setItems]=useState([
     {
       id:1,
@@ -118,8 +122,14 @@ export default function App(){
     },
   ]);
 
+  const [showFullItem,setShowFullItem]=useState(false);
   const[orders,setOrders]=useState([]);
+  const [currentItems,setCurrentItems]=useState([]);
+  const[fullItem, setFullItem]=useState({});
 
+    useEffect(()=>{
+      setCurrentItems(items);
+    },[items]);
   const deleteOrder=(id)=>{
     setOrders(orders.filter((el)=> el.id!==id));
   }
@@ -131,12 +141,27 @@ export default function App(){
     // без строки if - неограниченное количество товаров
   }
   
+  const chooseCategory=(category)=>{
+    if(category==='all'){
+      setCurrentItems(items);
+    }
+    else{
+        setCurrentItems(items.filter((el)=>el.category===category));
+    }
+  }
+  
+  const onShowItem=(item)=>{
+    setFullItem(item);
+    setShowFullItem(!showFullItem);
+  }
+
   return (
     <div className="wrapper">
-      <Header orders={orders}/>
-      <Items allItems={items} onAdd={addToOrder}/>
+      <Header orders={orders} onDelete={deleteOrder}/>
+      <Categories chooseCategory={chooseCategory}/> 
+      <Items allItems={currentItems} onAdd={addToOrder} onShowItem={onShowItem}/>
+      {showFullItem && <ShowFullItem onShowItem={onShowItem} onAdd={addToOrder} item={fullItem}/>}
       <Footer/>
     </div>
   );
 }
-
