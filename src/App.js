@@ -1,12 +1,16 @@
 import React from 'react';
 import {useState} from 'react';
 import {useEffect} from 'react';
+import {useContext} from 'react';
+import {createContext} from 'react';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import './index.css';
 import Items from './Components/Items';
 import Categories from './Components/Categories';
 import ShowFullItem from './Components/ShowFullItem';
+
+const AppContext=createContext();
 
 export default function App() {
   
@@ -156,12 +160,33 @@ export default function App() {
   }
 
   return (
-    <div className="wrapper">
-      <Header orders={orders} onDelete={deleteOrder}/>
-      <Categories chooseCategory={chooseCategory}/> 
-      <Items allItems={currentItems} onAdd={addToOrder} onShowItem={onShowItem}/>
-      {showFullItem && <ShowFullItem onShowItem={onShowItem} onAdd={addToOrder} item={fullItem}/>}
-      <Footer/>
-    </div>
+    <AppContext.Provider
+      value={
+        {
+          items,
+          setItems,
+          orders,
+          setOrders,
+          currentItems,
+          setCurrentItems,
+          showFullItem,
+          setShowFullItem,
+          fullItem,
+          setFullItem,
+          deleteOrder,
+          addToOrder,
+          chooseCategory,
+          onShowItem
+        }
+      }
+    >
+      <div className="wrapper">
+        <Header/>
+        <Categories/> 
+        <Items/>
+        {showFullItem && <ShowFullItem/>}
+        <Footer/>
+      </div>
+    </AppContext.Provider>  
   );
 }
