@@ -2,18 +2,21 @@ import React, { useState } from "react";
 import styles from './Header.module.scss';
 import { BsCart2 } from "react-icons/bs";
 import Orders from "../Orders";
+import { useAppContext } from "../../useAppContext";
 
 
 
-export default function Header(props){
 
-    const showOrders=(props)=>{
+export default function Header(){
+    const {orders,deleteOrder} = useAppContext();
+
+    const showOrders=()=>{
         let summa=0;
-        props.orders.forEach(el=>summa+=Number.parseFloat(el.price));
+        orders.forEach(el=>summa+=Number.parseFloat(el.price));
         return(
         <div>
-            {props.orders.map(el=>(
-                <Orders onDelete={props.onDelete} key={el.id} item={el}/>
+            {orders.map(el=>(
+                <Orders onDelete={deleteOrder} key={el.id} item={el}/>
             ))}  
             <p className={styles.summa}>Итого: {new Intl.NumberFormat().format(summa)}$</p>
         </div>
@@ -42,8 +45,8 @@ const showNothing=()=>{
             
                 {cartOpen &&(
                    <div className={styles.shopCart}>
-                        {props.orders.length>0?
-                            showOrders(props):showNothing()
+                        {orders.length>0?
+                            showOrders():showNothing()
                         }  
                     </div>
                 )}

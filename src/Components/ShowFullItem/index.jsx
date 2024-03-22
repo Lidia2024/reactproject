@@ -1,16 +1,18 @@
 import React from 'react';
 import styles from './ShowFullItem.module.scss';
+import { useAppContext } from "../../useAppContext";
 
-export default function ShowFullItem(props) {
+export default function ShowFullItem() {
+    const {fullItem,onShowItem,addToOrder, showFullItem, setShowFullItem}=useAppContext();
 
     return(
         <div className={styles.fullItem}>
             <div>
-                <img src={"./Images/"+props.item.img} alt="Error" onClick={()=>props.onShowItem(props.item)} />
-                <h2>{props.item.title}</h2>
-                <p>{props.item.desc}</p>
-                <b>{props.item.price}</b>
-                <button className={styles.addToCart} onClick={()=>props.onAdd(props.item)}>+</button>
+                <img src={"./Images/"+fullItem.img} alt="Error" onClick={()=>onShowItem(fullItem)} />
+                <h2>{fullItem.title}</h2>
+                <p>{fullItem.desc}</p>
+                <b>{fullItem.price}</b>
+                <button className={styles.addToCart} onClick={()=>addToOrder(fullItem)}>+</button>
             </div>
         </div>
     );
