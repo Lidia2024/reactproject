@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import styles from './Header.module.scss';
 import { BsCart2 } from "react-icons/bs";
-import Orders from "../Orders";
-import { useAppContext } from "../../useAppContext";
+import Orders from "../Orders/index.tsx";
+import { useAppContext } from "./../../useAppContext.tsx";
 
 
 
 
-export default function Header(){
-    const {orders,deleteOrder} = useAppContext();
+const Header:React.FC=()=>{
+    const {orders} = useAppContext();
 
     const showOrders=()=>{
         let summa=0;
@@ -16,7 +16,7 @@ export default function Header(){
         return(
         <div>
             {orders.map(el=>(
-                <Orders onDelete={deleteOrder} key={el.id} item={el}/>
+                <Orders key={el.id} item={el}/>
             ))}  
             <p className={styles.summa}>Итого: {new Intl.NumberFormat().format(summa)}$</p>
         </div>
@@ -30,7 +30,7 @@ const showNothing=()=>{
         </div>
     )
 }
-    let [cartOpen, setCartOpen]=useState(false);
+    let [cartOpen, setCartOpen]=useState<boolean>(false);
     return(
         <header>
             <div>
@@ -40,7 +40,7 @@ const showNothing=()=>{
                     <li>Контакты</li>
                     <li>Личный кабинет</li>
                 </ul>
-                <BsCart2 onClick={()=>setCartOpen(cartOpen=!cartOpen)} 
+                <BsCart2 onClick={()=>setCartOpen((prevCartOpen)=>!prevCartOpen)} 
                 className={`${styles.shopCartButton} ${cartOpen ? styles.active : ''}`}/>
             
                 {cartOpen &&(
@@ -54,4 +54,6 @@ const showNothing=()=>{
             <div className={styles.presentation}></div>
         </header>
     );
-}
+};
+
+export default Header;

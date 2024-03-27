@@ -192,15 +192,15 @@
 // }
 
 import React from "react";
-import Header from "./Components/Header";
-import Items from "./Components/Items";
-import Footer from "./Components/Footer";
+import Header from "./Components/Header/index.tsx";
+import Items from "./Components/Items/index.tsx";
+import Footer from "./Components/Footer/index.tsx";
+import Categories from "./Components/Categories/index.tsx";
+import ShowFullItem from "./Components/ShowFullItem/index.tsx";
+import { useAppContext } from "./useAppContext.tsx";
 import "./index.css";
-import Categories from "./Components/Categories";
-import ShowFullItem from "./Components/ShowFullItem";
-import { useAppContext } from "./useAppContext";
 
-export default function App() {
+export default function App(): JSX.Element {
     const { showFullItem } = useAppContext();
     return (
         <div className="wrapper">

@@ -1,9 +1,13 @@
 import React  from "react";
 import styles from './Orders.module.scss';
 import { MdDeleteOutline } from "react-icons/md";
-import { useAppContext } from "../../useAppContext";
+import { useAppContext } from "./../../useAppContext.tsx";
 
-export default function Orders({item}){
+interface Props{
+    item:any;
+}
+
+const Orders:React.FC<Props>=({item})=>{
     const {deleteOrder}=useAppContext();
     
     return(
@@ -14,4 +18,6 @@ export default function Orders({item}){
             <MdDeleteOutline onClick={()=>deleteOrder(item.id)} className={styles.deleteItem}/>
         </div>
     );
-}
+};
+
+export default Orders;

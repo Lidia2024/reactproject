@@ -1,4 +1,4 @@
-main{
+.main{
     display: flex;
     width: 100%;
     flex-wrap: wrap;
@@ -6,7 +6,7 @@ main{
     border-radius: 10px;
     margin-bottom: 50px;
 
-    h2,p,b,{
+    h2,p,b{
         margin: 10px 20px;
         color: #2f6671;
     }
@@ -14,4 +14,4 @@ main{
         font-size: 20px;
     }
        
-}
+};

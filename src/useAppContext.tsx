@@ -1,5 +1,5 @@
 import React,{useState, useEffect, useContext} from "react";
-const AppContext=React.createContext();
+const AppContext=React.createContext<any>(null);
 
 
 export const useAppContext= () => {
@@ -11,8 +11,8 @@ export const useAppContext= () => {
     return context;
 }
 
-const AppProvider=({children})=>{
-    const [items,setItems]=useState([
+const AppProvider:React.FC<{children:React.ReactNode}>=({children})=>{
+    const [items,setItems]=useState<any[]>([
         {
           id:1,
           title:'Ruler',
@@ -122,27 +122,27 @@ const AppProvider=({children})=>{
     
         }
     ]);
-    const [showFullItem,setShowFullItem]=useState(false);
-    const[orders,setOrders]=useState([]);
-    const [currentItems,setCurrentItems]=useState([]);
-    const[fullItem, setFullItem]=useState({});
+    const [showFullItem,setShowFullItem]=useState <boolean>(false);
+    const[orders,setOrders]=useState <any[]>([]);
+    const [currentItems,setCurrentItems]=useState <any[]>([]);
+    const[fullItem, setFullItem]=useState <any>({});
 
     useEffect(()=>{
       setCurrentItems(items);
     },[items]);
   
-    const deleteOrder=(id)=>{
+    const deleteOrder=(id:number)=>{
         setOrders(orders.filter((el)=> el.id!==id));
     }
 
-    const addToOrder=(item)=>{
+    const addToOrder=(item:any)=>{
         if(!orders.some((el)=>el.id===item.id)){
         setOrders([...orders,item]);
         } //добавление товара, но только по одному одного типа
         // без строки if - неограниченное количество товаров
     }
   
-    const chooseCategory=(category)=>{
+    const chooseCategory=(category:string)=>{
         if(category==='all'){
         setCurrentItems(items);
         }
@@ -150,7 +150,7 @@ const AppProvider=({children})=>{
             setCurrentItems(items.filter((el)=>el.category===category));
         }
     }
-    const onShowItem=(item)=>{
+    const onShowItem=(item:any)=>{
         setFullItem(item);
         setShowFullItem(!showFullItem);
     }
